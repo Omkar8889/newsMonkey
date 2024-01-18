@@ -7,13 +7,16 @@ export class NavBar extends Component {
   constructor(props) {
     super(props);
   };
-  handleClick = () => {
+  handleApply = () => {
     const newFilter = {
       ...this.props.newsFilter,
       country: document.getElementById('selectCountry').value,
       catagory: document.getElementById('selectCatagory').value
     };
-
+    window.scrollTo({
+      top: this.navRef.offsetTop,
+      behavior: "smooth",
+    });
     // Call the callback function to update the parent's state
     this.props.updateFilter(newFilter);
   };
@@ -21,7 +24,7 @@ export class NavBar extends Component {
   render() {
     return (
       <div className="">
-                    <nav className="navbar navbar-expand-lg bg-body-secondary">
+                    <nav ref={ref => (this.navRef = ref)} className="navbar fixed-top navbar-expand-lg bg-body-secondary">
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">NewsMonkey</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +57,7 @@ export class NavBar extends Component {
                     <option value="sports">Sports</option>
                     <option value="technology">Technology</option>
                   </select>
-                    <button className="btn btn-info mx-2"onClick={this.handleClick}>apply</button>
+                    <button className="btn btn-info mx-2"onClick={this.handleApply}>apply</button>
             </div>
             </nav>
       </div>

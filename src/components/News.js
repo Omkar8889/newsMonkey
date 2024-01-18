@@ -9,8 +9,8 @@ export class News extends Component {
     this.state = {
       articles: [],
       // api keys
-      apiKey: "8c7964127d5c4bd68054d687eb169810",
-      // apiKey:"072988b7e4cc4e2e9f2a0f6803585c75",
+      // apiKey: "8c7964127d5c4bd68054d687eb169810",
+      apiKey:"072988b7e4cc4e2e9f2a0f6803585c75",
       currentPage: 1,
       loading: false,
     };
@@ -104,8 +104,6 @@ export class News extends Component {
             {articles.map((element) => {
               return (
                 <div className="col-md-4 my-2" key={element.url ? element.url : ""}>
-                  {console.log("articles "+articles.length)}
-                  {console.log(totalCount)}
                   <NewsItem
                     title={element.title ? element.title.slice(0, 50) : ""}
                     description={element.description? element.description.slice(0, 90): "" }
